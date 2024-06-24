@@ -40,9 +40,9 @@
       font-size: 30px;
     }
     .hidden-text {
-      position: relative;
+      position: absolute;
       font-size: 9em;
-      line-height: 1.5em;
+      line-height: 1.4em;
       color: white;
       text-align: center;
       opacity: 0;
@@ -52,8 +52,21 @@
     .hidden-text:hover {
       color: violet;
     }
-    .show .hidden-text {
+    .hidden-text.left {
+      left: -100%;
+    }
+    .hidden-text.right {
+      right: -100%;
+    }
+    .show .hidden-text.left {
       opacity: 1;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .show .hidden-text.right {
+      opacity: 1;
+      left: 50%;
+      transform: translateX(-50%);
     }
     .text-container {
       position: absolute;
@@ -68,9 +81,9 @@
   <div class="brush-icon" onclick="showSections()"></div>
 
   <div class="text-container">
-    <div class="hidden-text left" id="text-paintings">Картины</div>
-    <div class="hidden-text right" id="text-design">Дизайн</div>
-    <div class="hidden-text left" id="text-sculptures">Скульптуры</div>
+    <div class="hidden-text left" style="top: 0%;" id="text-paintings">Картины</div>
+    <div class="hidden-text right" style="top: 35%;" id="text-design">Дизайн</div>
+    <div class="hidden-text left" style="top: 70%;" id="text-sculptures">Скульптуры</div>
   </div>
 
   <script>
