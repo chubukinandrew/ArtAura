@@ -35,7 +35,8 @@
     .hidden-text {
       position: fixed;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
       font-size: 3em;
       color: white;
       text-align: center;
@@ -43,23 +44,29 @@
       z-index: 5;
     }
     .hidden-text.left {
-      left: -50%;
       animation: slideInFromLeft 1s forwards;
     }
     .hidden-text.right {
-      right: -50%;
       animation: slideInFromRight 1s forwards;
     }
     @keyframes slideInFromLeft {
+      from {
+        left: -50%;
+        opacity: 0;
+      }
       to {
         left: 50%;
-        transform: translateX(-50%) translateY(-50%);
+        opacity: 1;
       }
     }
     @keyframes slideInFromRight {
+      from {
+        right: -50%;
+        opacity: 0;
+      }
       to {
         right: 50%;
-        transform: translateX(50%) translateY(-50%);
+        opacity: 1;
       }
     }
     .section {
@@ -94,11 +101,13 @@
 
   <script>
     function showSections() {
+      console.log('Button clicked, showing sections...');
       document.getElementById('left-text').style.display = 'block';
       document.getElementById('right-text').style.display = 'block';
       document.getElementById('middle-text').style.display = 'block';
 
       setTimeout(() => {
+        console.log('Displaying content sections...');
         document.getElementById('paintings').style.display = 'block';
         document.getElementById('sculptures').style.display = 'block';
         document.getElementById('design').style.display = 'block';
