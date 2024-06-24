@@ -42,7 +42,7 @@
     .hidden-text {
       position: absolute;
       font-size: 9em;
-      line-height: 1.4em;
+      line-height: 1.5em;
       color: white;
       text-align: center;
       opacity: 0;
@@ -65,12 +65,12 @@
     }
     .show .hidden-text.right {
       opacity: 1;
-      right: 50%;
+      left: 50%;
       transform: translateX(-50%);
     }
     .text-container {
       position: absolute;
-      top: 15%;
+      top: 10%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,9 +81,9 @@
   <div class="brush-icon" onclick="showSections()"></div>
 
   <div class="text-container">
-    <div class="hidden-text left" style="top: 0%;" id="text-paintings">Картины</div>
-    <div class="hidden-text right" style="top: 35%;" id="text-design">Дизайн</div>
-    <div class="hidden-text left" style="top: 70%;" id="text-sculptures">Скульптуры</div>
+    <div class="hidden-text left" id="text-paintings">Картины</div>
+    <div class="hidden-text right" id="text-design">Дизайн</div>
+    <div class="hidden-text left" id="text-sculptures">Скульптуры</div>
   </div>
 
   <script>
