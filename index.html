@@ -39,21 +39,28 @@
     }
     .hidden-text {
       position: absolute;
-      font-size: 3em;
+      font-size: 4em;
       color: white;
       text-align: center;
       opacity: 0;
       z-index: 5;
       transition: opacity 1s, transform 1s;
     }
-    .hidden-text.center {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
+    .hidden-text.left {
+      left: -100%;
+      transform: translateY(-50%);
     }
-    .show .hidden-text {
+    .hidden-text.right {
+      right: -100%;
+      transform: translateY(-50%);
+    }
+    .show .hidden-text.left {
       opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translateY(-50%) translateX(100%);
+    }
+    .show .hidden-text.right {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-100%);
     }
     .section {
       padding: 100px 20px;
@@ -66,9 +73,9 @@
 <body>
   <div class="brush-icon" onclick="showSections()"></div>
 
-  <div class="hidden-text center" id="text-paintings">Картины</div>
-  <div class="hidden-text center" id="text-sculptures" style="top: 60%;">Скульптуры</div>
-  <div class="hidden-text center" id="text-design" style="top: 70%;">Дизайн</div>
+  <div class="hidden-text left" style="top: 40%;" id="text-paintings">Картины</div>
+  <div class="hidden-text right" style="top: 50%;" id="text-design">Дизайн</div>
+  <div class="hidden-text left" style="top: 60%;" id="text-sculptures">Скульптуры</div>
 
   <div class="section" id="paintings">
     <h1>Картины</h1>
