@@ -70,12 +70,6 @@
       opacity: 1;
       transform: translateX(100%);
     }
-    .section {
-      padding: 100px 20px;
-      text-align: center;
-      min-height: 100vh;
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -85,29 +79,9 @@
   <div class="hidden-text middle" id="text-design">Дизайн</div>
   <div class="hidden-text right" id="text-sculptures">Скульптуры</div>
 
-  <div class="section" id="paintings">
-    <h1>Картины</h1>
-    <p>Здесь будут размещены картины.</p>
-  </div>
-
-  <div class="section" id="sculptures">
-    <h1>Скульптуры</h1>
-    <p>Здесь будут размещены скульптуры.</p>
-  </div>
-
-  <div class="section" id="design">
-    <h1>Дизайн</h1>
-    <p>Здесь будет размещен дизайн.</p>
-  </div>
-
   <script>
     function showSections() {
       document.body.classList.add('show');
-      setTimeout(() => {
-        document.getElementById('paintings').style.display = 'block';
-        document.getElementById('sculptures').style.display = 'block';
-        document.getElementById('design').style.display = 'block';
-      }, 2000); // Увеличил время для лучшего восприятия
     }
   </script>
 </body>
