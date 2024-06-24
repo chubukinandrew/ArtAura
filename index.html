@@ -41,6 +41,7 @@
     .hidden-text {
       position: absolute;
       font-size: 9em;
+      line-height: 1.5em; /* Увеличение межстрочного интервала */
       color: white;
       text-align: center;
       opacity: 0;
@@ -67,9 +68,9 @@
 <body>
   <div class="brush-icon" onclick="showSections()"></div>
 
-  <div class="hidden-text left" style="top: 20%;" id="text-paintings">Картины</div>
+  <div class="hidden-text left" style="top: 15%;" id="text-paintings">Картины</div>
   <div class="hidden-text right" style="top: 40%;" id="text-design">Дизайн</div>
-  <div class="hidden-text left" style="top: 60%;" id="text-sculptures">Скульптуры</div>
+  <div class="hidden-text left" style="top: 65%;" id="text-sculptures">Скульптуры</div>
 
   <script>
     function showSections() {
