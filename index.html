@@ -41,6 +41,7 @@
     .hidden-text {
       position: absolute;
       font-size: 9em;
+      line-height: 1.2em;
       color: white;
       text-align: center;
       opacity: 0;
@@ -52,9 +53,6 @@
     .hidden-text.right {
       right: -100%;
     }
-    .hidden-text.middle {
-      left: -100%;
-    }
     .show .hidden-text.left {
       opacity: 1;
       left: 50%;
@@ -62,13 +60,8 @@
     }
     .show .hidden-text.right {
       opacity: 1;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .show .hidden-text.middle {
-      opacity: 1;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 50%;
+      transform: translateX(50%);
     }
   </style>
 </head>
@@ -76,8 +69,8 @@
   <div class="brush-icon" onclick="showSections()"></div>
 
   <div class="hidden-text left" style="top: 30%;" id="text-paintings">Картины</div>
-  <div class="hidden-text middle" style="top: 50%;" id="text-design">Дизайн</div>
-  <div class="hidden-text right" style="top: 70%;" id="text-sculptures">Скульптуры</div>
+  <div class="hidden-text right" style="top: 40%;" id="text-design">Дизайн</div>
+  <div class="hidden-text left" style="top: 50%;" id="text-sculptures">Скульптуры</div>
 
   <script>
     function showSections() {
