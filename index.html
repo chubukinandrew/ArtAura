@@ -18,6 +18,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      flex-direction: column;
     }
     .brush-icon {
       position: fixed;
@@ -39,38 +40,38 @@
       font-size: 30px;
     }
     .hidden-text {
-      position: absolute;
+      position: relative;
       font-size: 9em;
-      line-height: 1.5em; /* Увеличение межстрочного интервала */
+      line-height: 1.5em;
       color: white;
       text-align: center;
       opacity: 0;
-      transition: opacity 1s, transform 1s;
+      transition: opacity 1s, transform 1s, color 0.3s;
+      cursor: pointer;
     }
-    .hidden-text.left {
-      left: -100%;
+    .hidden-text:hover {
+      color: violet;
     }
-    .hidden-text.right {
-      right: -100%;
-    }
-    .show .hidden-text.left {
+    .show .hidden-text {
       opacity: 1;
-      left: 50%;
-      transform: translateX(-50%);
     }
-    .show .hidden-text.right {
-      opacity: 1;
-      right: 50%;
-      transform: translateX(50%);
+    .text-container {
+      position: absolute;
+      top: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   </style>
 </head>
 <body>
   <div class="brush-icon" onclick="showSections()"></div>
 
-  <div class="hidden-text left" style="top: 15%;" id="text-paintings">Картины</div>
-  <div class="hidden-text right" style="top: 40%;" id="text-design">Дизайн</div>
-  <div class="hidden-text left" style="top: 65%;" id="text-sculptures">Скульптуры</div>
+  <div class="text-container">
+    <div class="hidden-text left" id="text-paintings">Картины</div>
+    <div class="hidden-text right" id="text-design">Дизайн</div>
+    <div class="hidden-text left" id="text-sculptures">Скульптуры</div>
+  </div>
 
   <script>
     function showSections() {
