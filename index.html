@@ -12,6 +12,10 @@
       background: linear-gradient(to right, #ff7e5f, #feb47b);
       color: #333;
       overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     .brush-icon {
       position: fixed;
@@ -33,41 +37,16 @@
       font-size: 30px;
     }
     .hidden-text {
-      position: fixed;
+      position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0);
       font-size: 3em;
       color: white;
       text-align: center;
-      display: none;
+      opacity: 0;
       z-index: 5;
-    }
-    .hidden-text.left {
-      animation: slideInFromLeft 1s forwards;
-    }
-    .hidden-text.right {
-      animation: slideInFromRight 1s forwards;
-    }
-    @keyframes slideInFromLeft {
-      from {
-        left: -50%;
-        opacity: 0;
-      }
-      to {
-        left: 50%;
-        opacity: 1;
-      }
-    }
-    @keyframes slideInFromRight {
-      from {
-        right: -50%;
-        opacity: 0;
-      }
-      to {
-        right: 50%;
-        opacity: 1;
-      }
+      transition: transform 1s, opacity 1s;
     }
     .section {
       padding: 100px 20px;
@@ -80,9 +59,9 @@
 <body>
   <div class="brush-icon" onclick="showSections()"></div>
 
-  <div class="hidden-text left" id="left-text">Картины</div>
-  <div class="hidden-text right" id="right-text">Скульптуры</div>
-  <div class="hidden-text left" style="top: 60%;" id="middle-text">Дизайн</div>
+  <div class="hidden-text" id="text-paintings">Картины</div>
+  <div class="hidden-text" id="text-sculptures">Скульптуры</div>
+  <div class="hidden-text" id="text-design">Дизайн</div>
 
   <div class="section" id="paintings">
     <h1>Картины</h1>
@@ -102,9 +81,14 @@
   <script>
     function showSections() {
       console.log('Button clicked, showing sections...');
-      document.getElementById('left-text').style.display = 'block';
-      document.getElementById('right-text').style.display = 'block';
-      document.getElementById('middle-text').style.display = 'block';
+      document.getElementById('text-paintings').style.transform = 'translate(-50%, -50%) scale(1)';
+      document.getElementById('text-paintings').style.opacity = '1';
+      
+      document.getElementById('text-sculptures').style.transform = 'translate(-50%, -50%) scale(1)';
+      document.getElementById('text-sculptures').style.opacity = '1';
+
+      document.getElementById('text-design').style.transform = 'translate(-50%, -50%) scale(1)';
+      document.getElementById('text-design').style.opacity = '1';
 
       setTimeout(() => {
         console.log('Displaying content sections...');
