@@ -39,42 +39,6 @@
       content: '🖌️';
       font-size: 30px;
     }
-    .hidden-text {
-      position: relative;
-      font-size: 5em;
-      line-height: 1.2em;
-      color: white;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1s, transform 1s, color 0.3s;
-      cursor: pointer;
-      margin: 0.5em 0;
-    }
-    .hidden-text:hover {
-      color: violet;
-    }
-    .hidden-text.left {
-      transform: translateX(-100%);
-    }
-    .hidden-text.right {
-      transform: translateX(100%);
-    }
-    .show .hidden-text.left {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .show .hidden-text.right {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .text-container {
-      position: absolute;
-      top: 10%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1em;
-    }
     .home-text {
       font-size: 5em;
       color: white;
@@ -90,6 +54,13 @@
       align-items: center;
       height: 100vh;
     }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
@@ -103,12 +74,6 @@
   </div>
 
   <div class="brush-icon" onclick="showSections()"></div>
-
-  <div class="text-container">
-    <div class="hidden-text left" id="text-paintings">Картины</div>
-    <div class="hidden-text right" id="text-design">Дизайн</div>
-    <div class="hidden-text left" id="text-sculptures">Скульптуры</div>
-  </div>
 
   <script>
     function showSections() {
@@ -141,18 +106,11 @@
       scene.add(mesh);
 
       gsap.to(mesh.rotation, {
-        scrollTrigger: {
-          trigger: '#home',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            mesh.rotation.x = progress * Math.PI;
-            mesh.rotation.y = progress * Math.PI;
-            mesh.material.opacity = 1 - progress;
-          }
-        }
+        duration: 5,
+        x: Math.PI * 2,
+        y: Math.PI * 2,
+        repeat: -1,
+        ease: "linear"
       });
     });
 
