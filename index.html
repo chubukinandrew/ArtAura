@@ -75,9 +75,28 @@
       align-items: center;
       gap: 1em; /* расстояние между строками */
     }
+    .home-text {
+      font-size: 5em;
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
   </style>
 </head>
 <body>
+  <div id="home">
+    <div class="home-text">Лучшее искусство Уральска здесь</div>
+  </div>
+
   <div class="brush-icon" onclick="showSections()"></div>
 
   <div class="text-container">
@@ -90,6 +109,15 @@
     function showSections() {
       document.body.classList.add('show');
     }
+
+    window.addEventListener('scroll', function() {
+      const homeText = document.querySelector('.home-text');
+      const scrollY = window.scrollY;
+      if (scrollY > 0) {
+        homeText.style.opacity = 1 - scrollY / window.innerHeight;
+        homeText.style.transform = `translate(-50%, -50%) scale(${1 - scrollY / window.innerHeight})`;
+      }
+    });
   </script>
 </body>
 </html>
