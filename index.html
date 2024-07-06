@@ -32,27 +32,24 @@
       font-style: italic;
       color: #f5f5f5;
       text-shadow: 0 0 2vmin #c89deb;
+    }
 
-      span {
-        display: inline-block;
-      }
+    .text {
+      font-size: 5vmin;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: transform 0.2s, opacity 0.5s;
+    }
 
-      &.text {
-        font-size: 5vmin;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        white-space: nowrap;
-        transition: transform 0.2s, opacity 0.5s;
+    .text span {
+      display: inline-block;
+      animation: fade-in 1s ease-in-out forwards;
+      animation-delay: calc(0.1s * var(--i));
+    }
 
-        span {
-          animation: fade-in 1s ease-in-out forwards;
-          animation-delay: calc(0.1s * var(--i));
-        }
-
-        span.space {
-          width: 1em;
-        }
-      }
+    .text span.space {
+      width: 1em;
     }
 
     @keyframes fade-in {
@@ -101,6 +98,31 @@
       content: '🖌️';
       font-size: 30px;
     }
+
+    .gallery-container {
+      overflow-x: hidden;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      white-space: nowrap;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      transition: left 2s ease-in-out;
+      background: black;
+      width: 100%;
+    }
+
+    .gallery {
+      display: flex;
+      align-items: center;
+    }
+
+    .gallery img {
+      height: 600px;
+      width: 900px;
+      margin: 0 20px;
+    }
   </style>
 </head>
 <body>
@@ -142,12 +164,21 @@
 
   <div class="brush-icon" onclick="showSections()"></div>
 
+  <div class="gallery-container" id="gallery-container">
+    <div class="gallery" id="gallery">
+      <img src="https://via.placeholder.com/900x600?text=Art+1" alt="Art 1">
+      <img src="https://via.placeholder.com/900x600?text=Art+2" alt="Art 2">
+      <img src="https://via.placeholder.com/900x600?text=Art+3" alt="Art 3">
+    </div>
+  </div>
+
   <script>
     function showSections() {
       document.body.classList.add('show');
     }
 
     const text = document.getElementById('animated-text');
+    const galleryContainer = document.getElementById('gallery-container');
     const initialFontSize = 5;
     let fontSize = initialFontSize;
     let animationTriggered = false;
@@ -170,7 +201,21 @@
         text.style.animation = 'smoke 2s forwards';
         setTimeout(() => {
           text.style.display = 'none';
+          galleryContainer.style.left = '0';
         }, 2000); // duration of the smoke animation
+      }
+    });
+
+    galleryContainer.addEventListener('transitionend', () => {
+      if (animationTriggered) {
+        galleryContainer.style.overflowX = 'auto';
+      }
+    });
+
+    galleryContainer.addEventListener('wheel', (event) => {
+      if (animationTriggered) {
+        event.preventDefault();
+        galleryContainer.scrollLeft += event.deltaY;
       }
     });
   </script>
