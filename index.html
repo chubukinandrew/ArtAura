@@ -116,12 +116,19 @@
     .gallery {
       display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 50vw; /* Увеличение расстояния между изображениями */
     }
 
     .gallery img {
       height: 600px;
       width: 900px;
-      margin: 0 20px;
+      margin: 0 25vw; /* Добавление отступов слева и справа */
+      transition: opacity 2s;
+    }
+
+    .gallery img:first-child {
+      opacity: 1;
     }
   </style>
 </head>
@@ -179,6 +186,7 @@
 
     const text = document.getElementById('animated-text');
     const galleryContainer = document.getElementById('gallery-container');
+    const galleryImages = document.querySelectorAll('.gallery img');
     const initialFontSize = 5;
     let fontSize = initialFontSize;
     let animationTriggered = false;
@@ -202,6 +210,7 @@
         setTimeout(() => {
           text.style.display = 'none';
           galleryContainer.style.left = '0';
+          galleryImages.forEach(img => img.style.opacity = '1');
         }, 2000); // duration of the smoke animation
       }
     });
